@@ -7,12 +7,17 @@ export default Controller.extend({
   actions: {
     save() {
       console.log('saving');
-      let post = this.get('model');
-      post.set('title', 'Hey emberfire!');
-      post.set('body', 'wohoooooo!!!');
+      this.set('saving', true);
+
+      let post = this.store.createRecord('post', {});
+      post.set('title', this.get('title'));
+      post.set('body', this.get('body'));
       post.save().
         then(() => {
           console.log('saved!');
+          this.set('title', '');
+          this.set('body', '');
+          this.set('saving', false);
         });
     }
   }

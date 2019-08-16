@@ -1,2 +1,15 @@
-<button {{action "save"}}>Save!</button>
+{{#each model as |post|}}
+  <div>
+    <div>{{post.title}}</div>
+    <div>{{post.body}}</div>
+  </div>
+{{/each}}
+
+<label for="title">Title</label>
+<Input @id="title" @type="text" @value={{this.title}} @disabled={{this.saving}} />
+
+<label for="body">Body</label>
+<Input @id="body" @type="text" @value={{this.body}} @disabled={{this.saving}} />
+
+<button disabled={{saving}} {{action "save"}}>Save!</button>
 
