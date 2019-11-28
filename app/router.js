@@ -8,6 +8,10 @@ const Router = EmberRouter.extend({
 
 Router.map(function() {
   this.route('post');
+  this.route('function-test');
+  this.route('accounting', function() {
+    this.route('accounts');
+  });
 });
 
 export default Router;
